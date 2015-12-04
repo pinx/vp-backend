@@ -24,10 +24,9 @@ defmodule Backend.OrderControllerTest do
       "end_dt" => order.end_dt}
   end
 
-  test "does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
-    assert_raise Ecto.NoResultsError, fn ->
-      get conn, order_path(conn, :show, -1)
-    end
+  test "return empty response when id is nonexistent", %{conn: conn} do
+    conn = get conn, order_path(conn, :index)
+    assert json_response(conn, 200)["data"] == []
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do

@@ -27,8 +27,13 @@ defmodule Backend.OrderController do
   end
 
   def show(conn, %{"id" => id}) do
-    order = Repo.get!(Order, id)
-    render(conn, "show.json", order: order)
+    order = Repo.get(Order, id)
+    case order do
+      nil ->
+        render(conn, "show.json", order: order)
+      order ->
+        render(conn, "show.json", order: order)
+    end
   end
 
   def update(conn, %{"id" => id, "order" => order_params}) do
@@ -53,5 +58,11 @@ defmodule Backend.OrderController do
     Repo.delete!(order)
 
     send_resp(conn, :no_content, "")
+  end
+
+  def options(conn, _params) do
+    conn
+    |> put_status(200)
+    |> text(nil)
   end
 end

@@ -21,6 +21,10 @@ defmodule Backend.Endpoint do
 
   plug Plug.RequestId
   plug Plug.Logger
+  plug Corsica,
+    log: :debug,
+    origins: "*",
+    allow_headers: ~w(Accept Content-Type X-Secret-Token)
 
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],

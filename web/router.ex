@@ -1,30 +1,21 @@
 defmodule Backend.Router do
   use Backend.Web, :router
 
-  pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
-  end
-
   pipeline :api do
-    plug :accepts, ["json"]
+    plug :accepts, ["json", "application/vnd.api+json"]
   end
 
-  scope "/", Backend do
-    pipe_through :browser # Use the default browser stack
+  scope "/api", Backend do
+    pipe_through :api
 
-    get "/", PageController, :index
+    resources "/orders", OrderController
+    options "/orders*anything", OrderController, :options
 
-    resources "/orders", OrderController, except: [:new, :edit]
+    resources "/activities", ActivityController
+    options "/activities*anything", ActivityController, :options
 
+    resources "/resources", ResourceController
+    options "/resources*anything", ResourceController, :options
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", Backend do
-  #   pipe_through :api
-  # end
 
 end

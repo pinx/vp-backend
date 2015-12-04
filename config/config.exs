@@ -14,6 +14,11 @@ config :backend, Backend.Endpoint,
   pubsub: [name: Backend.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+# Volgens http://hexdocs.pm/phoenix/Phoenix.Controller.html
+config :plug, :mimes, %{
+    "application/vnd.api+json" => ["json"]
+}
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

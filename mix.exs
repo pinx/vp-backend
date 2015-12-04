@@ -37,6 +37,8 @@ defmodule Backend.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.1"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:corsica, "~> 0.4"},
+     {:timex, ">= 0.9.0"},
      {:cowboy, "~> 1.0"}]
   end
 
