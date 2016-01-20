@@ -2,11 +2,11 @@ defmodule Backend.ResourceView do
   use Backend.Web, :view
 
   def render("index.json", %{resources: resources}) do
-    %{data: render_many(resources, Backend.ResourceView, "resource.json")}
+    %{resources: render_many(resources, Backend.ResourceView, "resource.json")}
   end
 
   def render("show.json", %{resource: resource}) do
-    %{data: render_one(resource, Backend.ResourceView, "resource.json")}
+    %{resources: render_one(resource, Backend.ResourceView, "resource.json")}
   end
 
   def render("resource.json", %{resource: resource}) do

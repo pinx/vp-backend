@@ -23,4 +23,5 @@
   "tds": {:hex, :tds, "0.5.3"},
   "tds_ecto": {:hex, :tds_ecto, "1.0.0"},
   "timex": {:hex, :timex, "1.0.0-rc3"},
+  "timex_ecto": {:hex, :timex_ecto, "0.6.0"},
   "tzdata": {:hex, :tzdata, "0.5.5"}}

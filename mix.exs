@@ -19,7 +19,7 @@ defmodule Backend.Mixfile do
   def application do
     [mod: {Backend, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :tds_ecto, :postgrex]]
+                    :phoenix_ecto, :tds_ecto, :postgrex, :timex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,7 +38,8 @@ defmodule Backend.Mixfile do
      {:phoenix_html, "~> 2.1"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:corsica, "~> 0.4"},
-     {:timex, ">= 0.9.0"},
+     {:timex, ">= 1.0.0-rc3"},
+     {:timex_ecto, "~> 0.6.0"},
      {:cowboy, "~> 1.0"}]
   end
 
